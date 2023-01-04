@@ -59,16 +59,6 @@ func > (lhs:Vehicle, rhs:Vehicle) -> Bool
     return lhs.vehiclePrice() > rhs.vehiclePrice();
 }
 
-/*
-func print(items: Vehicle, separator: String = " ", terminator: String = "\n") {
-    print("dfdfgd")
-    if items is Vehicle {
-        print("vehicle")
-    }
-    /*
-    Swift.print(items.vehicleBrand(), items.vehicleModel(), items.type(), items.vehicleColour(), items.vehiclePrice())
-    */
-}*/
 
 class Bike : Vehicle{
     private var bikeType:BikeType;
@@ -102,12 +92,9 @@ class Car : Vehicle{
         }
 }
 
-func print(param:Bike)
-{
-    param.getNumOfWheels()
-    print("gfg")
+func print(items: Vehicle, separator: String = " ", terminator: String = "\n") {
+        Swift.print(items.vehicleBrand(), items.vehicleModel(), items.type(), items.vehicleColour(), items.vehiclePrice())
 }
-
 
 //create objects
 var tvsScooty = Bike( vehicleType:VehicleType.petrol, bikeType:BikeType.scooter, brand:"tvs", model:"scooty", colour:"red", mileage:20.2, price:9, weight:45 );
@@ -120,16 +107,7 @@ tvsScooty.getNumOfWheels();
 fordMustang.getNumOfWheels();
 heroHonda.getNumOfWheels();
 
-/*
-//Operator overloading for << operator.
-std::cout << tvsScooty;
-std::cout << fordMustang;
-std::cout << heroHonda;
-*/
-
-let temp = tvsScooty as Vehicle
-print(temp)
-
+print(items: tvsScooty)
 
 //Operator overloading for < and > operator
 var result:String
