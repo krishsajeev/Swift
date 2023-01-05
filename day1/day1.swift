@@ -49,17 +49,6 @@ class Vehicle{
     
 }
 
-func < (lhs:Vehicle, rhs:Vehicle) -> Bool
-{
-    return lhs.vehiclePrice() < rhs.vehiclePrice();
-}
-
-func > (lhs:Vehicle, rhs:Vehicle) -> Bool
-{
-    return lhs.vehiclePrice() > rhs.vehiclePrice();
-}
-
-
 class Bike : Vehicle{
     private var bikeType:BikeType;
     private var weight:Float;
@@ -92,8 +81,19 @@ class Car : Vehicle{
         }
 }
 
+//Overloading print(), < and >
 func print(items: Vehicle, separator: String = " ", terminator: String = "\n") {
-        Swift.print(items.vehicleBrand(), items.vehicleModel(), items.type(), items.vehicleColour(), items.vehiclePrice())
+        Swift.print("BRAND: ", items.vehicleBrand(),"VEHICLEMODEL: ", items.vehicleModel(),"TYPE: ", items.type(),"VEHICLE COLOUR: ",  items.vehicleColour(),"VEHICLEPRICE: ", items.vehiclePrice(),separator: "\n")
+}
+
+func < (lhs:Vehicle, rhs:Vehicle) -> Bool
+{
+    return lhs.vehiclePrice() < rhs.vehiclePrice();
+}
+
+func > (lhs:Vehicle, rhs:Vehicle) -> Bool
+{
+    return lhs.vehiclePrice() > rhs.vehiclePrice();
 }
 
 //create objects
@@ -108,6 +108,8 @@ fordMustang.getNumOfWheels();
 heroHonda.getNumOfWheels();
 
 print(items: tvsScooty)
+print(items: fordMustang)
+print(items: heroHonda)
 
 //Operator overloading for < and > operator
 var result:String
