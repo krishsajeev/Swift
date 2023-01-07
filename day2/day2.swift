@@ -183,6 +183,7 @@ class Broker {
         print(banks.getName(), banks.getEstablishedDate(), banks.getBranchName())
     }
     
+    //Demonstrated Variadic parameter in Swift
     func printer(banks: Bank...) {
         for bank in banks {
             print(bank.getName(), bank.getEstablishedDate(), bank.getBranchName())
@@ -204,7 +205,7 @@ class Broker {
     
     func comparer(loan1: [Loan]) -> Loan {
         var temp = loan1[0]
-        for i in stride(from: 1, to: 10, by: 2) {
+        for i in stride(from: 1, to: loan1.count, by: 1) {
             temp = comparer(loan1: temp, loan2: loan1[i])
         }
         return temp
@@ -239,5 +240,5 @@ arr.append(sbi)
 arr.append(icici)
 arr.append(hdfc)
 
-l = b.comparer(loan1: icici, loan2: hdfc)
+l = b.comparer(loan1: arr)
 b.printResult(loan: l)
