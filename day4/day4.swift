@@ -1,8 +1,8 @@
 import Foundation
 
 public func myCeil(num: Float) -> Int {
-    var decimal = num - Float(Int(num))
-    var whole = Int(num)
+    let decimal = num - Float(Int(num))
+    let whole = Int(num)
     
     if(decimal >= 0.5) {
         return whole + 1
@@ -21,6 +21,10 @@ class Attribute {
     
     func getVal() -> Int {
         return self.val
+    }
+    
+    deinit {
+        print("ATTRIBUTE CLASS DELETED ")
     }
 }
 
@@ -69,6 +73,7 @@ class Rectangle
         area = Attribute(val: Int(myCeil(num: w * h)))
     }
     
+    //Copy constructor
     init(obj: Rectangle)
     {
         self.height = obj.height
@@ -83,7 +88,7 @@ class Rectangle
     }
     
     deinit {
-        print("DEALLOCATED")
+        print("RECTANGLE CLASS DELETED !")
     }
 }
 
