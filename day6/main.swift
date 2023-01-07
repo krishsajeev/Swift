@@ -42,13 +42,10 @@ func arrayIndexFinder(arr: [Int], index: Int) throws {
 
 // call throwing function from do block
 do {
-    try division(numerator: 10, denominator: 10)
+    try division(numerator: 10, denominator: 10)    //Division by zero
     print("Valid Division")
     
-    try indexFinder(str: "sajeev", num: 2)
-    print("Valid index")
-    
-    /*    DANGER ! DO NOT UNCOMMENT !
+    /*    DANGER ! DO NOT UNCOMMENT !               //Heap memory
      
      var p: [UnsafeMutableRawPointer?] = Array()
      
@@ -58,12 +55,15 @@ do {
      
     */
     
-    let arr = Array(repeating: 1, count: 10)
+    //String cannot be passed to numeric variable since Swift throws Build Error
+    
+    try indexFinder(str: "sajeev", num: 2)  //Invalid String index error
+    print("Valid index")
+    
+    let arr = Array(repeating: 1, count: 10)   //Invalid Array index error
     try arrayIndexFinder(arr: arr, index: 89)
     print("Valid Array Index")
 }
-
-// catch error if function throws an error
 catch MyExceptions.dividedByZero {
     print("Invalid Division Error")
 }
