@@ -1,1 +1,3 @@
+# DAY3 - POINTERS
 
+## OMITTED
