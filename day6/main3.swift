@@ -1,6 +1,6 @@
 import Foundation
 
-var arr = ["History", "Science", "Math"]
+var arr = ["history", "science", "math"]
 
 var flag: Bool = false
 
@@ -25,11 +25,11 @@ class Student {
             if (!(age >= 15 && age <= 21)) {
                 throw MyExceptions.AgeNotWithinRange
             }
-            if !(arr.contains(course)) {
+            if !(arr.contains(course.lowercased())) {
                 throw MyExceptions.InvalidCourseException
             }
             for ascii in name.utf8 {
-                if !(ascii >= 97 && ascii <= 122) && !(ascii <= 65 && ascii  <= 90) {
+                if !(ascii >= 97 && ascii <= 122) && !(ascii >= 65 && ascii  <= 90) {
                     throw MyExceptions.NameNotValidException
                 }
             }
@@ -60,7 +60,7 @@ class Student {
 }
 
 
-var stud: Student = Student(rollno: 123, name: "sajeev", age: 17, course: "History")
+var stud: Student = Student(rollno: 123, name: "sjeev", age: 17, course: "historY")
 
-var stud2: Student = Student(rollno: 123, name: "sajeev", age: 17, course: "History")
+//var stud2: Student = Student(rollno: 123, name: "sajeev", age: 17, course: "History")
 
