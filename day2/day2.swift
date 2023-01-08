@@ -27,156 +27,6 @@ protocol Loan {
 }
  
  
-class ICICI: Bank, Loan {
-    var issuingBank: String
-    var loantype: LoanType
-    var interestRate: Float
-    var documentRequired: String
-    
-    
-    var bankType: BankType
-    var name: String
-    var establishedDate: String
-    var branchName: String
-    
-    
-    init(type: LoanType, interestRate: Float, documentRequired: String, bankType: BankType, name: String, establishedDate: String, branchName: String) {
-        self.loantype = type
-        self.interestRate = interestRate
-        self.documentRequired = documentRequired
-        self.bankType = bankType
-        self.name = name
-        self.establishedDate = establishedDate
-        self.branchName = branchName
-        self.issuingBank = name
-    }
-    
-    
-    func getType() -> LoanType{
-        return loantype
-    }
-    
-    func getInterestRate() -> Float{
-        return interestRate
-    }
-    
-    func getDocumentRequired() -> String{
-        return documentRequired
-    }
-    
-    func getName() -> String{
-        return name
-    }
-    
-    func getEstablishedDate() -> String{
-        return establishedDate
-    }
-    
-    func getBranchName() -> String{
-        return branchName
-    }
-    
-}
- 
-class HDFC: Bank, Loan {
-    
-    var issuingBank: String
-    var loantype: LoanType
-    var interestRate: Float
-    var documentRequired: String
-    
-    var bankType: BankType
-    var name: String
-    var establishedDate: String
-    var branchName: String
-    
-    init(type: LoanType, interestRate: Float, documentRequired: String, bankType: BankType, name: String, establishedDate: String, branchName: String) {
-        self.loantype = type
-        self.interestRate = interestRate
-        self.documentRequired = documentRequired
-        self.bankType = bankType
-        self.name = name
-        self.establishedDate = establishedDate
-        self.branchName = branchName
-        self.issuingBank = name
-    }
-    
-    func getType() -> LoanType{
-        return loantype
-    }
-    
-    func getInterestRate() -> Float{
-        return interestRate
-    }
-    
-    func getDocumentRequired() -> String{
-        return documentRequired
-    }
-    
-    func getName() -> String{
-        return name
-    }
-    
-    func getEstablishedDate() -> String{
-        return establishedDate
-    }
-    
-    func getBranchName() -> String{
-        return branchName
-    }
-    
-    
-}
-
-class SBI: Bank, Loan {
-    
-    var issuingBank: String
-    var loantype: LoanType
-    var interestRate: Float
-    var documentRequired: String
-    
-    var bankType: BankType
-    var name: String
-    var establishedDate: String
-    var branchName: String
-    
-    init(type: LoanType, interestRate: Float, documentRequired: String, bankType: BankType, name: String, establishedDate: String, branchName: String) {
-        self.loantype = type
-        self.interestRate = interestRate
-        self.documentRequired = documentRequired
-        self.bankType = bankType
-        self.name = name
-        self.establishedDate = establishedDate
-        self.branchName = branchName
-        self.issuingBank = name
-    }
-    
-    func getType() -> LoanType{
-        return loantype
-    }
-    
-    func getInterestRate() -> Float{
-        return interestRate
-    }
-    
-    func getDocumentRequired() -> String{
-        return documentRequired
-    }
-    
-    func getName() -> String{
-        return name
-    }
-    
-    func getEstablishedDate() -> String{
-        return establishedDate
-    }
-    
-    func getBranchName() -> String{
-        return branchName
-    }
-    
-}
-
 class Broker {
     //Overloaded printer functions
     func printer(banks: Bank) {
@@ -213,28 +63,120 @@ class Broker {
     
 }
 
+func getLoanType(name: String) -> LoanType {
+    if name.lowercased() == "goldloan" {
+        return LoanType.goldLoan
+    }
+    else if name.lowercased() == "landloan" {
+        return LoanType.landLoan
+    }
+    else if name.lowercased() == "personalloan" {
+        return LoanType.personalLoan
+    }
+    return LoanType.personalLoan
+}
+
+func getBankType(name: String) -> BankType {
+    if name.lowercased() == "publicsector" {
+        return BankType.publicSector
+    }
+    else if name.lowercased() == "privatesector" {
+        return BankType.privateSector
+    }
+    return BankType.privateSector
+}
+
+
 //Create objects of various banks and their issued loans
-var sbi = SBI(type: LoanType.goldLoan, interestRate: 45.6, documentRequired: "GOLD DOCUMENTS", bankType: BankType.publicSector, name: "SBI", establishedDate: "jan 1994", branchName: "chennai")
 
-var icici = ICICI(type: LoanType.landLoan, interestRate: 32.4, documentRequired: "LAND DOCUMENTS", bankType: BankType.privateSector, name: "ICICI", establishedDate: "feb 2001", branchName: "madurai")
 
-var hdfc = HDFC(type: LoanType.personalLoan, interestRate: 12.2, documentRequired: "SALARY DOCUMENTS", bankType: BankType.privateSector, name: "HDFC", establishedDate: "aug 2005", branchName: "comibatore")
+print("CREATE SBI OBJECT\n\n")
+
+print("ENNTER INTEREST RATE\n")
+var interestRate = Float(readLine()!)!
+print("ENTER DOCUMENTS\n")
+var documents = readLine()
+print("ENTER ESTABLISHED DATE\n")
+var estDate = readLine()
+print("ENTER BRANCH NAME\n")
+var branchName = readLine()
+print("ENTER LOAN TYPE\n")
+var loanType = readLine()
+print("ENTER BANK TYPE\n")
+var bankType = readLine()
+
+
+var sbi = SBI(type: getLoanType(name: loanType!), interestRate: interestRate, documentRequired: documents!, bankType: getBankType(name: bankType!), name: "SBI BANK", establishedDate:  estDate!, branchName: branchName!)
+
+print("CREATE ICICI OBJECT\n\n")
+print("ENNTER INTEREST RATE\n")
+interestRate = Float(readLine()!)!
+print("ENTER DOCUMENTS\n")
+documents = readLine()
+print("ENTER ESTABLISHED DATE\n")
+estDate = readLine()
+print("ENTER BRANCH NAME\n")
+branchName = readLine()
+print("ENTER LOAN TYPE\n")
+loanType = readLine()
+print("ENTER BANK TYPE\n")
+bankType = readLine()
+
+var icici = ICICI(type: getLoanType(name: loanType!), interestRate: interestRate, documentRequired: documents!, bankType: getBankType(name: bankType!), name: "ICICI BANK", establishedDate:  estDate!, branchName: branchName!)
+
+
+print("CREATE HDFC OBJECT\n\n")
+
+print("ENNTER INTEREST RATE\n")
+interestRate = Float(readLine()!)!
+print("ENTER DOCUMENTS\n")
+documents = readLine()
+print("ENTER ESTABLISHED DATE\n")
+estDate = readLine()
+print("ENTER BRANCH NAME\n")
+branchName = readLine()
+print("ENTER LOAN TYPE\n")
+loanType = readLine()
+print("ENTER BANK TYPE\n")
+bankType = readLine()
+
+var hdfc = HDFC(type: getLoanType(name: loanType!), interestRate: interestRate, documentRequired: documents!, bankType: getBankType(name: bankType!), name: "HDFC BANK", establishedDate:  estDate!, branchName: branchName!)
+
+print("\nDO YOU WANT TO CREATE BROKER OBJECT? [Y/N]\n")
+let option = readLine()
+if option!.lowercased() == "y" {
+    print("BROKER OBJECT CREATED!\n\n")
+}
+else{
+    print("PROGRAM FINISHED !")
+    exit(0)
+}
 
 //Create Broker object
 var b = Broker()
 
 // Print details of single bank
+print("PRINTING DETAILS OF SBI BANK!!!\n")
 b.printer(banks: sbi)
+print("PRINTING DETAILS OF HDFC BANK!!!\n")
+b.printer(banks: hdfc)
+print("PRINTING DETAILS OF ICICI BANK!!!\n")
+b.printer(banks: icici)
 
+
+print("PRINTING DETAILS OF MULTIPLE BANK!!!\n")
 //print details of multiple banks
 b.printer(banks: sbi, icici, hdfc)
 
+print("COMPARING ICICI AND HDFC BANK\n")
 var l = b.comparer(loan1: icici, loan2: hdfc)
 b.printResult(loan: l)
 
+print("COMPARING ICICI, SBI AND HDFC BANK\n")
 l = b.comparer(loan1: icici, loan2: hdfc, loan3: sbi)
 b.printResult(loan: l)
 
+print("COMPARING ALL BANKS\n")
 var arr = [Loan] ()
 arr.append(sbi)
 arr.append(icici)
