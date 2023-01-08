@@ -14,7 +14,6 @@ func division(numerator: Int, denominator: Int) throws {
     if denominator == 0 {
       throw MyExceptions.dividedByZero
     }
-    
     else {
       let result = numerator / denominator
       print(result)
@@ -42,7 +41,12 @@ func arrayIndexFinder(arr: [Int], index: Int) throws {
 
 // call throwing function from do block
 do {
-    try division(numerator: 10, denominator: 10)    //Division by zero
+    print("ENTER THE NUMERATOR\n")
+    let num1 = Int(readLine()!)!
+    print("ENTER THE DENOMINATOR\n")
+    let num2 = Int(readLine()!)!
+    
+    try division(numerator: num1, denominator: num2)    //Division by zero
     print("Valid Division")
     
     /*    DANGER ! DO NOT UNCOMMENT !               //Heap memory
@@ -57,11 +61,20 @@ do {
     
     //String cannot be passed to numeric variable since Swift throws Build Error
     
-    try indexFinder(str: "sajeev", num: 2)  //Invalid String index error
+    print("ENTER THE STRING\n")
+    let str = readLine()
+    print("ENTER THE INDEX\n")
+    let index = Int(readLine()!)!
+    
+    try indexFinder(str: str!, num: index)  //Invalid String index error
     print("Valid index")
     
-    let arr = Array(repeating: 1, count: 10)   //Invalid Array index error
-    try arrayIndexFinder(arr: arr, index: 89)
+    print("ENTER A SIZE TO CREATE AN ARRAY OF REPEATING 1s\n")
+    let size = Int(readLine()!)!
+    print("ENTER THE INDEX\n")
+    let idx = Int(readLine()!)!
+    let arr = Array(repeating: 1, count: size)   //Invalid Array index error
+    try arrayIndexFinder(arr: arr, index: idx)
     print("Valid Array Index")
 }
 catch MyExceptions.dividedByZero {
