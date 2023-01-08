@@ -12,12 +12,12 @@ enum MyExceptions: Error {
 }
 
 class Student {
-    var rollno: Int
+    var rollno: String
     var name: String
     var age: Int
     var course: String
     
-    init (rollno: Int, name: String, age: Int, course: String) {
+    init (rollno: String, name: String, age: Int, course: String) {
         do {
             if flag {
                 throw MyExceptions.DuplicateInstance
@@ -59,8 +59,16 @@ class Student {
     }
 }
 
+while(true){
+    print("ENTER THE STUDENT ROLLNO\n")
+    let roll = readLine()
+    print("ENTER THE STUDENT NAME\n")
+    let name = readLine()
+    print("ENTER THE STUDENT AGE\n")
+    let age = Int(readLine()!)!
+    print("ENTER THE COURSE NAME\n")
+    let course = readLine()
 
-var stud: Student = Student(rollno: 123, name: "sjeev", age: 17, course: "historY")
+    var stud: Student = Student(rollno: roll!, name: name!, age: age, course: course!)
 
-//var stud2: Student = Student(rollno: 123, name: "sajeev", age: 17, course: "History")
-
+}
